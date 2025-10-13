@@ -1,0 +1,9 @@
+{
+	"name": "adf-elsaOlist",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "f2b3c039-048e-4cc6-9ab8-e646f7d3c550",
+		"tenantId": "1c1f9e08-2f15-473d-be58-be9e4c4cf5a6"
+	}
+}
