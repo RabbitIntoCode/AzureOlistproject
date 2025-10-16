@@ -2,7 +2,7 @@
 	"name": "AzureSQLTargetConnection",
 	"type": "Microsoft.DataFactory/factories/linkedservices",
 	"properties": {
-		"description": "This connects to Azure SQL Database(Acts as target when loading data from excel to Azure SQL db , Acts as source while we need to send data from Azure Sql db to anyother target)",
+		"description": "This connects to Azure SQL Database(Acts as target when loading data from excel to Azure SQL db , Acts as source while we need to send data from Azure Sql db to ADLS/container of Storage account)",
 		"annotations": [],
 		"type": "AzureSqlDatabase",
 		"typeProperties": {
