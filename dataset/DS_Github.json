@@ -1,0 +1,30 @@
+{
+	"name": "DS_Github",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Http_Source_Github",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"file_name": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation",
+				"relativeUrl": {
+					"value": "RabbitIntoCode/ORS-Db-Dev/refs/heads/develop/Requiremnt_based_Brazillian_Ecomerce_Data/@{dataset().file_name}",
+					"type": "Expression"
+				}
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
