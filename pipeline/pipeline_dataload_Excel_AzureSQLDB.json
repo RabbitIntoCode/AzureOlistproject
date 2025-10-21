@@ -1,0 +1,163 @@
+{
+	"name": "pipeline_dataload_Excel_AzureSQLDB",
+	"properties": {
+		"activities": [
+			{
+				"name": "ToconsiderAllFiles",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "githubMetadata",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@pipeline().parameters.p_array",
+						"type": "Expression"
+					},
+					"activities": [
+						{
+							"name": "Github_to_AzureSQLdb",
+							"description": "Pipeline to export data from Github to Azure SQL DB",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "DelimitedTextSource",
+									"storeSettings": {
+										"type": "HttpReadSettings",
+										"requestMethod": "GET"
+									},
+									"formatSettings": {
+										"type": "DelimitedTextReadSettings"
+									}
+								},
+								"sink": {
+									"type": "AzureSqlSink",
+									"writeBehavior": "insert",
+									"sqlWriterUseTableLock": false
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "DS_Github",
+									"type": "DatasetReference",
+									"parameters": {
+										"file_name": {
+											"value": "@item().file_name",
+											"type": "Expression"
+										}
+									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "DS_AzureSQL",
+									"type": "DatasetReference",
+									"parameters": {
+										"table_name": {
+											"value": "@item().folder_name",
+											"type": "Expression"
+										},
+										"schema_name": "dbo"
+									}
+								}
+							]
+						}
+					]
+				}
+			},
+			{
+				"name": "githubMetadata",
+				"type": "WebActivity",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"method": "GET",
+					"url": "https://github.com/RabbitIntoCode/ORS-Db-Dev/tree/develop/Requiremnt_based_Brazillian_Ecomerce_Data"
+				}
+			}
+		],
+		"parameters": {
+			"p_array": {
+				"type": "array",
+				"defaultValue": [
+					{
+						"folder_name": "olist_customers",
+						"file_name": "olist_customers_dataset.csv"
+					},
+					{
+						"folder_name": "olist_geolocation",
+						"file_name": "olist_geolocation_dataset.csv"
+					},
+					{
+						"folder_name": "olist_location",
+						"file_name": "olist_location_dataset.csv"
+					},
+					{
+						"folder_name": "olist_order_items",
+						"file_name": "olist_order_items_dataset.csv"
+					},
+					{
+						"folder_name": "olist_order_payments",
+						"file_name": "olist_order_payments_dataset.csv"
+					},
+					{
+						"folder_name": "olist_order_review",
+						"file_name": "olist_order_reviews_dataset.csv"
+					},
+					{
+						"folder_name": "olist_orders",
+						"file_name": "olist_orders_dataset.csv"
+					},
+					{
+						"folder_name": "olist_products",
+						"file_name": "olist_products_dataset.csv"
+					},
+					{
+						"folder_name": "olist_sellers",
+						"file_name": "olist_sellers_dataset.csv"
+					},
+					{
+						"folder_name": "product_category_name_translation",
+						"file_name": "product_category_name_translation.csv"
+					}
+				]
+			}
+		},
+		"variables": {
+			"set_variable_access_token": {
+				"type": "Array"
+			}
+		},
+		"annotations": []
+	}
+}
