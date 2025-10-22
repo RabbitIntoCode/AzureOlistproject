@@ -7,9 +7,9 @@
 				"type": "ForEach",
 				"dependsOn": [
 					{
-						"activity": "githubMetadata",
+						"activity": "CopyHttpresponsetoAdls",
 						"dependencyConditions": [
-							"Completed"
+							"Succeeded"
 						]
 					}
 				],
@@ -19,6 +19,7 @@
 						"value": "@pipeline().parameters.p_array",
 						"type": "Expression"
 					},
+					"isSequential": true,
 					"activities": [
 						{
 							"name": "Github_to_AzureSQLdb",
@@ -79,8 +80,7 @@
 										"table_name": {
 											"value": "@item().folder_name",
 											"type": "Expression"
-										},
-										"schema_name": "dbo"
+										}
 									}
 								}
 							]
@@ -89,8 +89,10 @@
 				}
 			},
 			{
-				"name": "githubMetadata",
-				"type": "WebActivity",
+				"name": "CopyHttpresponsetoAdls",
+				"type": "Copy",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -101,9 +103,48 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"method": "GET",
-					"url": "https://github.com/RabbitIntoCode/ORS-Db-Dev/tree/develop/Requiremnt_based_Brazillian_Ecomerce_Data"
-				}
+					"source": {
+						"type": "RestSource",
+						"httpRequestTimeout": "00:01:40",
+						"requestInterval": "00.00:00:00.010",
+						"requestMethod": "GET",
+						"paginationRules": {
+							"supportRFC5988": "true"
+						}
+					},
+					"sink": {
+						"type": "JsonSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "JsonWriteSettings"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "ds_rest_api_response1",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ds_adls_raw",
+						"type": "DatasetReference",
+						"parameters": {
+							"response_name": {
+								"value": "@concat('api_name/', formatDateTime(utcNow(), 'yyyy'))\n",
+								"type": "Expression"
+							},
+							"response_file_name": {
+								"value": "@concat('response_', formatDateTime(utcNow(), 'yyyyMMddHHmmss'), '.json')\n",
+								"type": "Expression"
+							}
+						}
+					}
+				]
 			}
 		],
 		"parameters": {
@@ -111,51 +152,22 @@
 				"type": "array",
 				"defaultValue": [
 					{
-						"folder_name": "olist_customers",
-						"file_name": "olist_customers_dataset.csv"
-					},
-					{
 						"folder_name": "olist_geolocation",
 						"file_name": "olist_geolocation_dataset.csv"
-					},
-					{
-						"folder_name": "olist_location",
-						"file_name": "olist_location_dataset.csv"
-					},
-					{
-						"folder_name": "olist_order_items",
-						"file_name": "olist_order_items_dataset.csv"
-					},
-					{
-						"folder_name": "olist_order_payments",
-						"file_name": "olist_order_payments_dataset.csv"
-					},
-					{
-						"folder_name": "olist_order_review",
-						"file_name": "olist_order_reviews_dataset.csv"
-					},
-					{
-						"folder_name": "olist_orders",
-						"file_name": "olist_orders_dataset.csv"
 					},
 					{
 						"folder_name": "olist_products",
 						"file_name": "olist_products_dataset.csv"
 					},
 					{
-						"folder_name": "olist_sellers",
-						"file_name": "olist_sellers_dataset.csv"
+						"folder_name": "olist_order_items",
+						"file_name": "olist_order_items_dataset.csv"
 					},
 					{
-						"folder_name": "product_category_name_translation",
-						"file_name": "product_category_name_translation.csv"
+						"folder_name": "olist_order_review",
+						"file_name": "olist_order_reviews_dataset.csv"
 					}
 				]
-			}
-		},
-		"variables": {
-			"set_variable_access_token": {
-				"type": "Array"
 			}
 		},
 		"annotations": []
