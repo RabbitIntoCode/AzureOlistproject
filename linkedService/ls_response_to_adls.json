@@ -4,7 +4,7 @@
 		"annotations": [],
 		"type": "RestService",
 		"typeProperties": {
-			"url": "https://raw.githubusercontent.com/RabbitIntoCode/ORS-Db-Dev/refs/heads/develop/Requiremnt_based_Brazillian_Ecomerce_Data/olist_geolocation_dataset.csv",
+			"url": "https://github.com/RabbitIntoCode/ORS-Db-Dev/tree/develop/Requiremnt_based_Brazillian_Ecomerce_Data",
 			"enableServerCertificateValidation": true,
 			"authenticationType": "Anonymous"
 		}
