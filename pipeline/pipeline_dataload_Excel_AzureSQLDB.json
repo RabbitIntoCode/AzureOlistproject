@@ -152,16 +152,40 @@
 				"type": "array",
 				"defaultValue": [
 					{
+						"folder_name": "olist_location",
+						"file_name": "olist_location_dataset.csv"
+					},
+					{
 						"folder_name": "olist_geolocation",
 						"file_name": "olist_geolocation_dataset.csv"
+					},
+					{
+						"folder_name": "olist_customers",
+						"file_name": "olist_customers_dataset.csv"
+					},
+					{
+						"folder_name": "olist_sellers",
+						"file_name": "olist_sellers_dataset.csv"
+					},
+					{
+						"folder_name": "olist_product_category_translation",
+						"file_name": "product_category_name_translation.csv"
 					},
 					{
 						"folder_name": "olist_products",
 						"file_name": "olist_products_dataset.csv"
 					},
 					{
+						"folder_name": "olist_orders",
+						"file_name": "olist_orders_dataset.csv"
+					},
+					{
 						"folder_name": "olist_order_items",
 						"file_name": "olist_order_items_dataset.csv"
+					},
+					{
+						"folder_name": "olist_order_payments",
+						"file_name": "olist_order_payments_dataset.csv"
 					},
 					{
 						"folder_name": "olist_order_review",
