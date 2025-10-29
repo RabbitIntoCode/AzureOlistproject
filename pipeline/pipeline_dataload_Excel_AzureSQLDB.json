@@ -78,7 +78,7 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"table_name": {
-											"value": "@item().folder_name",
+											"value": "@pipeline().parameters.p_array",
 											"type": "Expression"
 										}
 									}
