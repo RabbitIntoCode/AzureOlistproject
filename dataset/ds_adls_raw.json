@@ -1,0 +1,34 @@
+{
+	"name": "ds_adls_raw",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Ls_AzureDataLakeRaw",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"response_name": {
+				"type": "string"
+			},
+			"response_file_name": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().response_file_name",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@dataset().response_name",
+					"type": "Expression"
+				},
+				"fileSystem": "rawexceldata"
+			}
+		},
+		"schema": {}
+	}
+}

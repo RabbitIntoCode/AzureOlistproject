@@ -1,0 +1,12 @@
+{
+	"name": "DS_Source_AzureSQL",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSQLTargetConnection",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": []
+	}
+}

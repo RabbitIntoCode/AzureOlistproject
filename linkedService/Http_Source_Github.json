@@ -1,0 +1,13 @@
+{
+	"name": "Http_Source_Github",
+	"properties": {
+		"description": "This LS connects to multiple source files in github",
+		"annotations": [],
+		"type": "HttpServer",
+		"typeProperties": {
+			"url": "https://raw.githubusercontent.com/",
+			"enableServerCertificateValidation": true,
+			"authenticationType": "Anonymous"
+		}
+	}
+}

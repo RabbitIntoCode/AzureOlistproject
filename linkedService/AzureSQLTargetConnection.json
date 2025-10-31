@@ -1,0 +1,18 @@
+{
+	"name": "AzureSQLTargetConnection",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"description": "This connects to Azure SQL Database(Acts as target when loading data from excel to Azure SQL db , Acts as source while we need to send data from Azure Sql db to ADLS/container of Storage account)",
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"server": "olistecomerceserver.database.windows.net",
+			"database": "olistecomercedb",
+			"encrypt": "mandatory",
+			"trustServerCertificate": false,
+			"authenticationType": "SQL",
+			"userName": "admincharishma",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDJCMEE4MzJCLUEwRTYtNDJBNC04MUNGLUMxMDIzQjg4NUY1Ql9jYTkwYmU4Yi1mM2MxLTRiOWEtOWQ2ZC0xZGNkNzkyZDcyODIiDQp9"
+		}
+	}
+}
