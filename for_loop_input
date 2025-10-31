@@ -1,0 +1,61 @@
+[
+{
+"schema" : "dbo",
+"table_name" : "olist_customers",
+"cdc_col" : "customer_id",
+"from_date" : ""
+},
+{
+"schema" : "dbo",
+"table_name" : "olist_geolocation",
+"cdc_col" : "geolocation_id",
+"from_date" : ""
+},
+{
+"schema" : "dbo",
+"table_name" : "olist_location",
+"cdc_col" : "location_id",
+"from_date" : ""
+},
+{
+"schema" : "dbo",
+"table_name" : "olist_order_items",
+"cdc_col" : "order_item_id",
+"from_date" : ""
+},
+{
+"schema" : "dbo",
+"table_name" : "olist_order_payments",
+"cdc_col" : "payment_sequential",
+"from_date" : ""
+},
+{
+"schema" : "dbo",
+"table_name" : "olist_order_review",
+"cdc_col" : "review_id",
+"from_date" : ""
+},
+{
+"schema" : "dbo",
+"table_name" : "olist_orders",
+"cdc_col" : "order_id",
+"from_date" : ""
+},
+{
+"schema" : "dbo",
+"table_name" : "olist_product_category_translation",
+"cdc_col" : "translation_id",
+"from_date" : ""
+},
+{
+"schema" : "dbo",
+"table_name" : "olist_products",
+"cdc_col" : "product_id",
+"from_date" : ""
+},
+{
+"schema" : "dbo",
+"table_name" : "olist_sellers",
+"cdc_col" : "seller_id",
+"from_date" : ""
+},
