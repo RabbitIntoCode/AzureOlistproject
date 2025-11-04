@@ -326,8 +326,7 @@
 					{
 						"activity": "Ingestion_loop",
 						"dependencyConditions": [
-							"Failed",
-							"Succeeded"
+							"Failed"
 						]
 					}
 				],
