@@ -1,0 +1,33 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "adf-elsaOlist"
+		},
+		"AzureSQLTargetConnection_password": {
+			"value": ""
+		},
+		"Ls_AzureDataLakeRaw_accountKey": {
+			"value": ""
+		},
+		"AzureSQLTargetConnection_properties_typeProperties_server": {
+			"value": "olistecomerceserver.database.windows.net"
+		},
+		"AzureSQLTargetConnection_properties_typeProperties_database": {
+			"value": "olistecomercedb"
+		},
+		"AzureSQLTargetConnection_properties_typeProperties_userName": {
+			"value": "admincharishma"
+		},
+		"Http_Source_Github_properties_typeProperties_url": {
+			"value": "https://raw.githubusercontent.com/"
+		},
+		"Ls_AzureDataLakeRaw_properties_typeProperties_url": {
+			"value": "https://elsaoliststorageaccount.dfs.core.windows.net/"
+		},
+		"ls_response_to_adls_properties_typeProperties_url": {
+			"value": "https://github.com/RabbitIntoCode/ORS-Db-Dev/tree/develop/Requiremnt_based_Brazillian_Ecomerce_Data"
+		}
+	}
+}
