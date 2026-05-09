@@ -1,5 +1,10 @@
 # AzureOlistproject
 
+This Repo provides the ADF related undertsanding for the Olist database
+Raw data sets can be found in "ORS-Db-Dev" Repo
+The Databricks Implementation of this can be found in "olist-etl-dbx-workspace-pipelineolist-etl-dbx-workspace-pipeline" Repo
+
+Project Overview:
 This project demonstrates the design and implementation of an end-to-end modern data engineering pipeline using Azure Databricks, Azure Data Factory, PySpark, and GitHub integration. 
 It showcases scalable data modeling techniques using Star Schema and normalization (3NF) for efficient and consistent data storage.
 The project implements incremental ETL/ELT workflows, dynamic SQL generation using Jinja templates, and Medallion Architecture-based data transformations to process and manage structured datasets efficiently.
